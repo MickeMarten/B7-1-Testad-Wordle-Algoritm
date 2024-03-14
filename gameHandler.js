@@ -1,4 +1,4 @@
-export function gameAlgorithm(playerInput, gameWord) {
+export function evaluateGameInput(playerInput, gameWord) {
   let playerArray = playerInput.toLowerCase().replace(/\s/g, '').split('');
   let gameArray = gameWord.toLowerCase().split('');
   const results = [];
