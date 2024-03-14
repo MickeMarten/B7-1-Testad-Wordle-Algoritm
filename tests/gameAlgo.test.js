@@ -38,14 +38,12 @@ describe('gameAlgo()', () => {
   // Checks if player letter is not included in game word. Also if left-over letters are treated as incorrect.
   it('Show incorrect letter in array object', () => {
     const output = evaluateGameInput('hallå', 'cykla');
-    expect(output).toEqual(
-      expect.arrayContaining([
-        { letter: 'h', result: 'Incorrect' },
-        { letter: 'a', result: 'Misplaced' },
-        { letter: 'l', result: 'Correct' },
-        { letter: 'l', result: 'Incorrect' },
-        { letter: 'å', result: 'Incorrect' },
-      ])
-    );
+    expect(output).toEqual([
+      { letter: 'h', result: 'Incorrect' },
+      { letter: 'a', result: 'Misplaced' },
+      { letter: 'l', result: 'Incorrect' },
+      { letter: 'l', result: 'Correct' },
+      { letter: 'å', result: 'Incorrect' },
+    ]);
   });
 });

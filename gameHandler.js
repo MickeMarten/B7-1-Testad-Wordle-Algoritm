@@ -37,4 +37,3 @@ export function evaluateGameInput(playerInput, gameWord) {
   console.log(results);
   return results;
 }
-evaluateGameInput('Hallå', 'Halå');
