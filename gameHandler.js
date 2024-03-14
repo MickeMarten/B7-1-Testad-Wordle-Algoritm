@@ -1,21 +1,24 @@
 export function evaluateGameInput(playerInput, gameWord) {
-  let playerArray = playerInput.toLowerCase().replace(/\s/g, '').split('');
-  let gameArray = gameWord.toLowerCase().split('');
+  const playerArray = playerInput.toLowerCase().replace(/\s/g, '').split('');
+  const gameArray = gameWord.toLowerCase().split('');
   const results = [];
 
   playerArray.forEach((letter, index) => {
     let gameWordIndex = gameArray.indexOf(letter);
     console.log(
-      `Bokstav i förhållande till spelets valda ord ${letter}:`,
+      `Bokstav i förhållande till spelets valda ords position ${letter}:`,
       gameWordIndex
     );
+    let result;
     if (gameArray[index] === letter) {
-      results.push({ letter, result: 'Correct' });
+      result = 'Correct';
     } else if (gameArray.includes(letter)) {
-      results.push({ letter, result: 'Misplaced' });
+      result = 'Misplaced';
     } else {
-      results.push({ letter, result: 'Incorrect' });
+      result = 'Incorrect';
     }
+
+    results.push({ letter, result });
   });
   results.forEach((item) => {
     if (item.result === 'Misplaced') {
@@ -30,3 +33,4 @@ export function evaluateGameInput(playerInput, gameWord) {
   console.log(results);
   return results;
 }
+evaluateGameInput('Hallå', 'Halå');
