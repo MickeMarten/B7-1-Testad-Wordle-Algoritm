@@ -1,6 +1,10 @@
+function handleStrings(str) {
+  return str.toLowerCase().replace(/\s/g, '').split('');
+}
+
 export function evaluateGameInput(playerInput, gameWord) {
-  const playerArray = playerInput.toLowerCase().replace(/\s/g, '').split('');
-  const gameArray = gameWord.toLowerCase().split('');
+  const playerArray = handleStrings(playerInput);
+  const gameArray = handleStrings(gameWord);
   const results = [];
 
   playerArray.forEach((letter, index) => {
