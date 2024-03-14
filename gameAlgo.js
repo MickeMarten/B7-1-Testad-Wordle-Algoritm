@@ -1,24 +1,32 @@
 export function gameAlgorithm(playerInput, gameWord) {
   let playerArray = playerInput.toLowerCase().replace(/\s/g, '').split('');
   let gameArray = gameWord.toLowerCase().split('');
-  const result = [];
+  const results = [];
 
   playerArray.forEach((letter, index) => {
     let gameWordIndex = gameArray.indexOf(letter);
     console.log(
-      `Position på gissad bokstav i förhållande till spelets valda ord ${letter}:`,
+      `Bokstav i förhållande till spelets valda ord ${letter}:`,
       gameWordIndex
     );
     if (gameArray[index] === letter) {
-      result.push({ letter, result: 'Correct' });
+      results.push({ letter, result: 'Correct' });
     } else if (gameArray.includes(letter)) {
-      result.push({ letter, result: 'Missplaced' });
+      results.push({ letter, result: 'Misplaced' });
     } else {
-      result.push({ letter, result: 'Incorrect' });
+      results.push({ letter, result: 'Incorrect' });
     }
   });
-  console.log(result);
-  return result;
+  results.forEach((item) => {
+    if (item.result === 'Misplaced') {
+      const foundDuplicateLetters = results.filter(
+        (result) => result.letter === item.letter && result.result === 'Correct'
+      );
+      if (foundDuplicateLetters.length > 0) {
+        item.result = 'Incorrect';
+      }
+    }
+  });
+  console.log(results);
+  return results;
 }
-
-gameAlgorithm('hallå', 'cykla');
